@@ -1,5 +1,5 @@
 "use client"
-import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react"
+import {  Twitter, Instagram, Linkedin, Youtube } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -14,20 +14,12 @@ const footerSections = {
     { name: "Header", href: "#header" },
     { name: "Portfolio", href: "#portfolio" },
     { name: "Services", href: "#services" },
-    { name: "Process", href: "#process" },
     { name: "Testimonials", href: "#testimonials" },
     { name: "Contact us", href: "#contact" },
-  ],
-  others: [
-    { name: "Lorem", href: "#" },
-    { name: "Lorem", href: "#" },
-    { name: "Lorem Plus", href: "#" },
-    { name: "Career", href: "#" },
   ],
 }
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
   { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Instagram, href: "#", label: "Instagram" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
@@ -48,7 +40,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-[#6d49e2] text-white">
+    <footer className="bg-pri text-white">
       {/* Desktop Footer */}
       <div className="hidden lg:block">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -83,20 +75,6 @@ export function Footer() {
               <h3 className="text-lg font-semibold text-white">Jump to</h3>
               <ul className="space-y-2">
                 {footerSections.jumpTo.map((item) => (
-                  <li key={item.name}>
-                    <a href={item.href} className="text-white/80 hover:text-white transition-colors text-sm">
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Others */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-white">Others</h3>
-              <ul className="space-y-2">
-                {footerSections.others.map((item) => (
                   <li key={item.name}>
                     <a href={item.href} className="text-white/80 hover:text-white transition-colors text-sm">
                       {item.name}
@@ -203,34 +181,6 @@ export function Footer() {
                 <div className="pb-3">
                   <ul className="space-y-2">
                     {footerSections.jumpTo.map((item) => (
-                      <li key={item.name}>
-                        <a href={item.href} className="text-white/80 hover:text-white text-sm">
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-
-            {/* Others Section */}
-            <div className="border-b border-white/10">
-              <button className="flex items-center justify-between w-full py-3" onClick={() => toggleSection("others")}>
-                <span className="font-medium">Others</span>
-                <svg
-                  className={`w-5 h-5 transition-transform ${openSection === "others" ? "rotate-180" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {openSection === "others" && (
-                <div className="pb-3">
-                  <ul className="space-y-2">
-                    {footerSections.others.map((item) => (
                       <li key={item.name}>
                         <a href={item.href} className="text-white/80 hover:text-white text-sm">
                           {item.name}

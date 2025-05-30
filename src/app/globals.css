@@ -2,8 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom theme */
-:root {
+
+@theme {
+  --color-*: initial;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-default-900);
+  --color-divider: var(--color-default-300);
+  --color-focus: var(--color-primary-600);
+  --color-content1: var(--color-default-50);
+  --color-content2: var(--color-default-200);
+  --color-content3: var(--color-default-300);
+  --color-content4: var(--color-default-400);
+
+  --color-default-50: #f6f5f5;
+  --color-default-100: #e7e6e6;
+  --color-default-200: #d2cfcf;
+  --color-default-300: #b2aeaf;
+  --color-default-400: #8b8586;
+  --color-default-500: #706a6b;
+  --color-default-600: #5f5b5b;
+  --color-default-700: #514d4d;
+  --color-default-800: #464445;
+  --color-default-900: #3e3b3b;
+  --color-default-950: #171616;
+
+  --color-gray-50: var(--color-default-50);
+  --color-gray-100: var(--color-default-100);
+  --color-gray-200: var(--color-default-200);
+  --color-gray-300: var(--color-default-300);
+  --color-gray-400: var(--color-default-400);
+  --color-gray-500: var(--color-default-500);
+  --color-gray-600: var(--color-default-600);
+  --color-gray-700: var(--color-default-700);
+  --color-gray-800: var(--color-default-800);
+  --color-gray-900: var(--color-default-900);
+
+  --default-primary: #193c89;
+  --color-primary-50: #eeeeff;
+  --color-primary-100: #e1e2fe;
+  --color-primary-200: #c8cafd;
+  --color-primary-300: #a8a7fa;
+  --color-primary-400: #8c83f6;
+  --color-primary-500: #7c66ee;
+  --color-primary-600: #6d49e2;
+  --color-primary-700: #603dc8;
+  --color-primary-800: #4d32a1;
+  --color-primary-900: #40307f;
+  --color-primary-950: #271c4a;
+
+  --default-primary: #efc100;
+  --color-secondary-50: #fefbe8;
+  --color-secondary-100: #fff8c2;
+  --color-secondary-200: #ffec89;
+  --color-secondary-300: #ffde59;
+  --color-secondary-400: #ffd512;
+  --color-secondary-500: #ecab06;
+  --color-secondary-600: #cc8302;
+  --color-secondary-700: #a35c05;
+  --color-secondary-800: #86480d;
+  --color-secondary-900: #723b11;
+  --color-secondary-950: #431e05;
+
+  --color-info: #2f80ed;
+  --color-success: #27ae60;
+  --color-warning-50: #f2c94c;
+  --color-danger-50: #eb5757;
+}
+
+
+/* :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
@@ -70,7 +141,7 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
-}
+} */
 
 @layer base {
   * {
