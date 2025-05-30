@@ -19,11 +19,11 @@ export function PartnersSection() {
         <div className="flex animate-infinite-scroll">
           {/* Multiple sets for seamless infinite loop */}
           {[...Array(4)].map((_, setIndex) => (
-            <div key={setIndex} className="flex flex-shrink-0">
+            <div key={setIndex} className="flex shrink-0">
               {partners.map((partner, index) => (
                 <div
                   key={`${setIndex}-${index}`}
-                  className="flex-shrink-0 mx-8 lg:mx-12 flex items-center justify-center"
+                  className="shrink-0 mx-8 lg:mx-12 flex items-center justify-center"
                 >
                   <Image
                     src={partner.logo || "/placeholder.svg"}
@@ -39,8 +39,8 @@ export function PartnersSection() {
         </div>
 
         {/* Gradient overlays for smooth fade effect */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-linear-to-r from-white to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-linear-to-l from-white to-transparent z-10 pointer-events-none"></div>
       </div>
     </section>
   )

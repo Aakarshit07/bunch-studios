@@ -116,7 +116,7 @@ export function ProjectsSection() {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="cursor-pointer group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                className="cursor-pointer group bg-white rounded-lg overflow-hidden shadow-xs hover:shadow-md transition-shadow"
                 onClick={() => handleProjectClick(project)}
               >
                 <div className="relative h-64 overflow-hidden">
@@ -131,7 +131,7 @@ export function ProjectsSection() {
                   <div className="text-sm text-gray-500">
                     {project.category} - {project.date}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#6d49e2] transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
@@ -162,7 +162,7 @@ export function ProjectsSection() {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Large Featured Project - Left Side */}
             <div
-              className="cursor-pointer group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              className="cursor-pointer group bg-white rounded-lg overflow-hidden shadow-xs hover:shadow-md transition-shadow"
               onClick={() => handleProjectClick(projects[0])}
             >
               <div className="relative h-96 overflow-hidden">
@@ -177,7 +177,7 @@ export function ProjectsSection() {
                 <div className="text-sm text-gray-500">
                   {projects[0].category} - {projects[0].date}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 group-hover:text-[#6d49e2] transition-colors">
+                <h3 className="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors">
                   {projects[0].title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed">{projects[0].description}</p>
@@ -189,7 +189,7 @@ export function ProjectsSection() {
               {projects.slice(1, 5).map((project) => (
                 <div
                   key={project.id}
-                  className="cursor-pointer group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                  className="cursor-pointer group bg-white rounded-lg overflow-hidden shadow-xs hover:shadow-md transition-shadow"
                   onClick={() => handleProjectClick(project)}
                 >
                   <div className="relative h-32 overflow-hidden">
@@ -204,7 +204,7 @@ export function ProjectsSection() {
                     <div className="text-xs text-gray-500">
                       {project.category} - {project.date}
                     </div>
-                    <h3 className="text-sm font-bold text-gray-900 group-hover:text-[#6d49e2] transition-colors line-clamp-2">
+                    <h3 className="text-sm font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
                       {project.title}
                     </h3>
                     <p className="text-gray-600 text-xs leading-relaxed line-clamp-2">{project.description}</p>

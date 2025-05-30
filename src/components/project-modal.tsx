@@ -80,7 +80,7 @@ export function ProjectModal() {
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setProjectModalOpen(false)} />
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-xs" onClick={() => setProjectModalOpen(false)} />
 
       {/* Modal Content - Right Sidebar */}
       <div className="relative w-[70vw] max-w-[1000px] h-full bg-white shadow-2xl overflow-y-auto">
@@ -101,7 +101,7 @@ export function ProjectModal() {
           ) : (
             <>
               {/* Blue Header Section */}
-              <div className="bg-gradient-to-r from-blue-400 to-blue-500 p-8 border-b-4 border-blue-600">
+              <div className="bg-linear-to-r from-blue-400 to-blue-500 p-8 border-b-4 border-blue-600">
                 <h2 className="text-3xl font-bold text-white mb-2">{selectedProject.title}</h2>
                 <p className="text-blue-100">
                   {selectedProject.category} - {selectedProject.date}
@@ -109,7 +109,7 @@ export function ProjectModal() {
               </div>
 
               {/* Blue Background Image Carousel Section */}
-              <div className="bg-gradient-to-br from-blue-300 to-blue-400 p-8 relative">
+              <div className="bg-linear-to-br from-blue-300 to-blue-400 p-8 relative">
                 <div className="flex justify-center items-center space-x-4 min-h-[400px]">
                   {selectedProject.images.slice(0, 5).map((image, index) => (
                     <div

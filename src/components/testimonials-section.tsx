@@ -135,7 +135,7 @@ export function TestimonialsSection() {
                 {testimonials.map((testimonial) => (
                   <div
                     key={testimonial.id}
-                    className="flex-shrink-0 px-4"
+                    className="shrink-0 px-4"
                     style={{
                       width: `${100 / slidesToShow}%`,
                     }}

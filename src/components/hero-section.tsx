@@ -28,15 +28,15 @@ export function HeroSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section className="pt-20 lg:pt-32 pb-16 lg:pb-24 bg-gradient-to-br from-gray-50 to-white">
+    <section className="pt-20 lg:pt-32 pb-16 lg:pb-24 bg-linear-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                Minimal. Powerful. <span className="text-[#6d49e2]">Growth-Driven</span>{" "}
-                <span className="text-[#6d49e2]">Websites</span>
+                Minimal. Powerful. <span className="text-primary">Growth-Driven</span>{" "}
+                <span className="text-primary">Websites</span>
               </h1>
               <p className="text-lg text-gray-600 max-w-lg">
                 We craft minimalistic sites built to drive organic traffic, conversions, and growth —for businesses &
@@ -45,7 +45,7 @@ export function HeroSection() {
             </div>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:space-x-4">
-              <Button size="lg" className="bg-[#6d49e2] hover:bg-[#6d49e2]/90">
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
                 Get Started
               </Button>
               <div className="flex items-center space-x-2">
@@ -138,7 +138,7 @@ export function HeroSection() {
                 <button
                   key={index}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === activeIndex ? "bg-[#6d49e2] scale-110" : "bg-gray-300"
+                    index === activeIndex ? "bg-primary scale-110" : "bg-gray-300"
                   }`}
                   onClick={() => setActiveIndex(index)}
                 />

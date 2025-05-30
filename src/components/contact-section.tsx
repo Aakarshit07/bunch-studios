@@ -50,7 +50,7 @@ export function ContactSection() {
                       name="formType"
                       checked={formType === "sayHi"}
                       onChange={() => setFormType("sayHi")}
-                      className="w-4 h-4 text-[#6d49e2] border-gray-300 focus:ring-[#6d49e2]"
+                      className="w-4 h-4 text-primary border-gray-300 focus:ring-primary"
                     />
                     <span className="text-sm font-medium text-gray-700">Say Hi</span>
                   </label>
@@ -60,7 +60,7 @@ export function ContactSection() {
                       name="formType"
                       checked={formType === "getQuote"}
                       onChange={() => setFormType("getQuote")}
-                      className="w-4 h-4 text-[#6d49e2] border-gray-300 focus:ring-[#6d49e2]"
+                      className="w-4 h-4 text-primary border-gray-300 focus:ring-primary"
                     />
                     <span className="text-sm font-medium text-gray-700">Get a Quote</span>
                   </label>
@@ -79,7 +79,7 @@ export function ContactSection() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#6d49e2] focus:border-[#6d49e2]"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-xs focus:outline-hidden focus:ring-primary focus:border-primary"
                   />
                 </div>
 
@@ -96,7 +96,7 @@ export function ContactSection() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#6d49e2] focus:border-[#6d49e2]"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-xs focus:outline-hidden focus:ring-primary focus:border-primary"
                   />
                 </div>
 
@@ -113,12 +113,12 @@ export function ContactSection() {
                     value={formData.message}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#6d49e2] focus:border-[#6d49e2] resize-none"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-xs focus:outline-hidden focus:ring-primary focus:border-primary resize-none"
                   />
                 </div>
 
                 {/* Submit Button */}
-                <Button type="submit" className="w-full bg-[#6d49e2] hover:bg-[#6d49e2]/90 text-white py-3">
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white py-3">
                   Send Message
                 </Button>
               </form>
@@ -128,12 +128,12 @@ export function ContactSection() {
             <div className="relative hidden lg:block">
               {/* Purple star */}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <div className="w-24 h-24 bg-[#6d49e2] rotate-45 transform"></div>
+                <div className="w-24 h-24 bg-primary rotate-45 transform"></div>
               </div>
 
               {/* Yellow star */}
               <div className="absolute bottom-0 right-0">
-                <div className="w-16 h-16 bg-[#efc100] rotate-45 transform"></div>
+                <div className="w-16 h-16 bg-secondary rotate-45 transform"></div>
               </div>
 
               {/* Decorative lines */}

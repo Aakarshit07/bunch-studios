@@ -42,14 +42,14 @@ export function ProcessSection() {
   }
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-cyan-50">
+    <section className="py-16 lg:py-24 bg-linear-to-br from-blue-50 to-cyan-50">
       <div className="container mx-auto px-6 sm:px-10 lg:px-16">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 mb-12 lg:mb-16">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-                Your Perfect Website Is Just <span className="text-[#6d49e2]">4 Step Away</span>
+                Your Perfect Website Is Just <span className="text-primary">4 Step Away</span>
               </h2>
             </div>
             <div className="flex items-center">
@@ -67,7 +67,7 @@ export function ProcessSection() {
               <div
                 key={index}
                 className={`rounded-3xl border-2 overflow-hidden transition-all duration-300 ${
-                  openStep === index ? "border-[#6d49e2]/30 bg-[#f8f6ff]" : "border-gray-200 bg-[#f5f5f5]"
+                  openStep === index ? "border-primary/30 bg-[#f8f6ff]" : "border-gray-200 bg-[#f5f5f5]"
                 }`}
               >
                 <button
@@ -78,7 +78,7 @@ export function ProcessSection() {
                     <div className="text-3xl font-bold text-gray-900">{step.number}</div>
                     <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
                   </div>
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full border-2 border-gray-300 flex items-center justify-center bg-white">
+                  <div className="shrink-0 h-10 w-10 rounded-full border-2 border-gray-300 flex items-center justify-center bg-white">
                     {openStep === index ? (
                       <Minus className="h-5 w-5 text-gray-600" />
                     ) : (

@@ -36,13 +36,13 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section className="py-16 lg:py-24 bg-[#6d49e2] text-white">
+    <section className="py-16 lg:py-24 bg-primary text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-12">
           {/* Left Content */}
           <div className="space-y-6">
             <div className="space-y-4">
-              <p className="text-[#efc100] text-sm uppercase tracking-wide font-medium">Our Services</p>
+              <p className="text-secondary text-sm uppercase tracking-wide font-medium">Our Services</p>
               <h2 className="text-3xl lg:text-4xl font-bold leading-tight text-white">
                 Take a look at the variety of services we offer.
               </h2>
@@ -67,7 +67,7 @@ export function ServicesSection() {
             >
               <div className="space-y-6">
                 <div className="space-y-4">
-                  <div className="p-3 bg-[#6d49e2]/10 rounded-xl w-fit">
+                  <div className="p-3 bg-primary/10 rounded-xl w-fit">
                     <img src={service.icon || "/placeholder.svg"} alt={service.title} className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 leading-tight">{service.title}</h3>
@@ -76,13 +76,13 @@ export function ServicesSection() {
                 <ul className="space-y-3">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 bg-[#6d49e2] rounded-full mt-2 flex-shrink-0" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0" />
                       <span className="text-sm text-gray-600 leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                <Button className="bg-[#6d49e2] hover:bg-[#6d49e2]/90 text-white font-medium px-6 py-2 rounded-lg">
+                <Button className="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-2 rounded-lg">
                   Get Started
                 </Button>
               </div>
