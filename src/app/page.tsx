@@ -29,12 +29,12 @@ export default function HomePage() {
           <ProjectsSection />
         </section>
 
-        <section id="process">
-          <ProcessSection />
-        </section>
-
         <section id="testimonials">
           <TestimonialsSection />
+        </section>
+
+        <section id="process">
+          <ProcessSection />
         </section>
 
         <section id="contact">
