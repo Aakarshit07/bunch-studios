@@ -1,74 +1,81 @@
 @import 'tailwindcss';
-
 @plugin 'tailwindcss-animate';
-
 @source '../../*.{js,ts,jsx,tsx,mdx}';
-
 @custom-variant dark (&:is(.dark *));
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');
+
 
 @theme {
-  --font-sans: var(--font-poppins), sans-serif;
+  --color-*: initial;
 
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
+  --color-white: #ffffff;
+  --color-black: #000000;
 
-  --color-primary: #6d49e2;
-  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-default-900);
+  --color-divider: var(--color-default-300);
+  --color-focus: var(--color-primary-600);
+  --color-content1: var(--color-default-50);
+  --color-content2: var(--color-default-200);
+  --color-content3: var(--color-default-300);
+  --color-content4: var(--color-default-400);
 
-  --color-secondary: #efc100;
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-default-50: #f6f5f5;
+  --color-default-100: #e7e6e6;
+  --color-default-200: #d2cfcf;
+  --color-default-300: #b2aeaf;
+  --color-default-400: #8b8586;
+  --color-default-500: #706a6b;
+  --color-default-600: #5f5b5b;
+  --color-default-700: #514d4d;
+  --color-default-800: #464445;
+  --color-default-900: #3e3b3b;
+  --color-default-950: #171616;
 
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-gray-50: var(--color-default-50);
+  --color-gray-100: var(--color-default-100);
+  --color-gray-200: var(--color-default-200);
+  --color-gray-300: var(--color-default-300);
+  --color-gray-400: var(--color-default-400);
+  --color-gray-500: var(--color-default-500);
+  --color-gray-600: var(--color-default-600);
+  --color-gray-700: var(--color-default-700);
+  --color-gray-800: var(--color-default-800);
+  --color-gray-900: var(--color-default-900);
 
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
+  --default-primary: #193c89;
+  --color-primary-50: #eeeeff;
+  --color-primary-100: #e1e2fe;
+  --color-primary-200: #c8cafd;
+  --color-primary-300: #a8a7fa;
+  --color-primary-400: #8c83f6;
+  --color-primary-500: #7c66ee;
+  --color-primary-600: #6d49e2;
+  --color-primary-700: #603dc8;
+  --color-primary-800: #4d32a1;
+  --color-primary-900: #40307f;
+  --color-primary-950: #271c4a;
 
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
+  --default-primary: #efc100;
+  --color-secondary-50: #fefbe8;
+  --color-secondary-100: #fff8c2;
+  --color-secondary-200: #ffec89;
+  --color-secondary-300: #ffde59;
+  --color-secondary-400: #ffd512;
+  --color-secondary-500: #ecab06;
+  --color-secondary-600: #cc8302;
+  --color-secondary-700: #a35c05;
+  --color-secondary-800: #86480d;
+  --color-secondary-900: #723b11;
+  --color-secondary-950: #431e05;
 
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-  --animate-scroll: scroll 30s linear infinite;
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
-  }
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
+  --color-info: #2f80ed;
+  --color-success: #27ae60;
+  --color-warning-50: #f2c94c;
+  --color-danger-50: #eb5757;
+  --font-poppins: "Poppins", sans-serif;
 }
+
 
 @utility container {
   margin-inline: auto;

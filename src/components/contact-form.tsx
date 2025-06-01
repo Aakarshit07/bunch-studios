@@ -44,7 +44,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="bg-white shadow-lg border-0">
+    <Card className="bg-secondary-100 shadow-lg">
       <CardContent className="p-6 lg:p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Form Type Selection */}
@@ -56,7 +56,7 @@ export function ContactForm() {
                 value="sayHi"
                 checked={formType === "sayHi"}
                 onChange={(e) => setFormType(e.target.value as "sayHi")}
-                className="w-4 h-4 text-primary border-gray-300 focus:ring-primary"
+                className="w-4 h-4 text-gray-900 border-gray-300 focus:ring-primary-400"
               />
               <span className="text-sm font-medium text-gray-700">Say Hi</span>
             </label>
@@ -67,7 +67,7 @@ export function ContactForm() {
                 value="getQuote"
                 checked={formType === "getQuote"}
                 onChange={(e) => setFormType(e.target.value as "getQuote")}
-                className="w-4 h-4 text-primary border-gray-300 focus:ring-primary"
+                className="w-4 h-4 text-gray-900 border-gray-300 focus:ring-primary-400"
               />
               <span className="text-sm font-medium text-gray-700">Get a Quote</span>
             </label>
@@ -86,7 +86,7 @@ export function ContactForm() {
               value={formData.name}
               onChange={handleInputChange}
               required
-              className="border-gray-300 focus:border-primary focus:ring-primary"
+              className="border-gray-300 focus:border-primary-600 focus:ring-primary-400"
             />
           </div>
 
@@ -103,7 +103,7 @@ export function ContactForm() {
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="border-gray-300 focus:border-primary focus:ring-primary"
+              className="border-gray-300 focus:border-primary-600 focus:ring-primary-400"
             />
           </div>
 
@@ -120,7 +120,7 @@ export function ContactForm() {
               value={formData.message}
               onChange={handleInputChange}
               required
-              className="border-gray-300 focus:border-primary focus:ring-primary resize-none"
+              className="border-gray-300 focus:border-primary-600 focus:ring-primary-400 resize-none"
             />
           </div>
 
