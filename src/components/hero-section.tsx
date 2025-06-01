@@ -1,51 +1,59 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Star } from "lucide-react"
-import Image from "next/image"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Star } from "lucide-react";
+import Image from "next/image";
 
 const websiteMockups = [
   {
     id: 1,
-    image: "/placeholder.svg?height=400&width=300&query=amazing web designs business website",
+    image:
+      "/placeholder.svg?height=400&width=300&query=amazing web designs business website",
     alt: "Amazing Web Designs for Business",
   },
   {
     id: 2,
-    image: "/placeholder.svg?height=400&width=300&query=business course platform website",
+    image:
+      "/placeholder.svg?height=400&width=300&query=business course platform website",
     alt: "Business Course Platform",
   },
   {
     id: 3,
-    image: "/placeholder.svg?height=400&width=300&query=styles collection website design",
+    image:
+      "/placeholder.svg?height=400&width=300&query=styles collection website design",
     alt: "Styles Collection Website",
   },
-]
+];
 
 export function HeroSection() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="pt-20 lg:pt-32 pb-16 lg:pb-24 bg-linear-to-br from-gray-50 to-white">
+    <section className="pt-20 lg:pt-32 pb-16 lg:pb-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                Minimal. Powerful. <span className="text-primary">Growth-Driven</span>{" "}
-                <span className="text-primary">Websites</span>
+                Minimal. Powerful.{" "}
+                <span className="text-primary-600">Growth-Driven</span>{" "}
+                <span className="text-primary-600">Websites</span>
               </h1>
-              <p className="text-lg text-gray-600 max-w-lg">
-                We craft minimalistic sites built to drive organic traffic, conversions, and growth —for businesses &
-                brands that value clarity over clutter.
+              <p className="text-base font-medium text-gray-700 max-w-lg">
+                We craft minimalistic sites built to drive organic traffic,
+                conversions, and growth —for businesses & brands that value
+                clarity over clutter.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:space-x-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Button
+                size="lg"
+                className="bg-primary-600 hover:bg-primary-600/90 text-white"
+              >
                 Get Started
               </Button>
               <div className="flex items-center space-x-2">
@@ -73,15 +81,21 @@ export function HeroSection() {
                       className="rounded-full border-2 border-white"
                     />
                   </div>
-                  <div className="flex items-center ml-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-sm font-medium">4.8</span>
-                  <span className="text-xs text-gray-500">700+ Reviews</span>
+                  <div className="flex items-center gap-1">
+                    <div className="flex items-center">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-4 w-4 fill-secondary-400 text-secondary-400"
+                        />
+                      ))}
+                    </div>
+                    <span className="text-sm font-medium">4.8</span>
+                  </div>
+
+                  <span className="text-xs text-gray-500"><span className="font-medium text-gray-900">700+</span> Reviews</span>
                 </div>
               </div>
             </div>
@@ -94,10 +108,11 @@ export function HeroSection() {
               {websiteMockups.map((mockup, index) => (
                 <div
                   key={mockup.id}
-                  className={`relative rounded-2xl overflow-hidden shadow-xl transition-all duration-500 ease-out cursor-pointer ${
-                    hoveredIndex === index || (hoveredIndex === null && index === activeIndex)
+                  className={`relative rounded-2xl overflow-hidden transition-all duration-500 ease-out cursor-pointer ${
+                    hoveredIndex === index ||
+                    (hoveredIndex === null && index === activeIndex)
                       ? "w-[320px]" // Expanded width
-                      : "w-[180px]" // Default width
+                      : "w-[160px]" // Default width
                   } h-[400px]`} // Fixed height for all cards
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
@@ -113,7 +128,8 @@ export function HeroSection() {
                   {/* Overlay for non-active cards */}
                   <div
                     className={`absolute inset-0 bg-black transition-opacity duration-500 ${
-                      hoveredIndex === index || (hoveredIndex === null && index === activeIndex)
+                      hoveredIndex === index ||
+                      (hoveredIndex === null && index === activeIndex)
                         ? "opacity-0"
                         : "opacity-20"
                     }`}
@@ -138,7 +154,9 @@ export function HeroSection() {
                 <button
                   key={index}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === activeIndex ? "bg-primary scale-110" : "bg-gray-300"
+                    index === activeIndex
+                      ? "bg-primary scale-110"
+                      : "bg-gray-300"
                   }`}
                   onClick={() => setActiveIndex(index)}
                 />
@@ -148,5 +166,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
