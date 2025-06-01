@@ -43,9 +43,7 @@ export default function HomePage() {
 
         <Footer />
       </section>
-
-
-
+      
       <ProjectModal />
     </main>
   );
