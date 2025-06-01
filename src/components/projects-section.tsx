@@ -131,7 +131,7 @@ export function ProjectsSection() {
                   <div className="text-sm text-gray-500">
                     {project.category} - {project.date}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-950 group-hover:text-primary-600 transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
@@ -177,7 +177,7 @@ export function ProjectsSection() {
                 <div className="text-sm text-gray-500">
                   {projects[0].category} - {projects[0].date}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-bold text-gray-950 group-hover:text-primary-600 transition-colors">
                   {projects[0].title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed">{projects[0].description}</p>
@@ -204,7 +204,7 @@ export function ProjectsSection() {
                     <div className="text-xs text-gray-500">
                       {project.category} - {project.date}
                     </div>
-                    <h3 className="text-sm font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
+                    <h3 className="text-lg font-bold text-gray-950 group-hover:text-primary-600 transition-colors line-clamp-2">
                       {project.title}
                     </h3>
                     <p className="text-gray-600 text-xs leading-relaxed line-clamp-2">{project.description}</p>

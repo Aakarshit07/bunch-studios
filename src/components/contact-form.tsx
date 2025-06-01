@@ -44,7 +44,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="bg-secondary-100 shadow-lg">
+    <Card className="w-full bg-secondary-100 shadow-lg rounded-2xl">
       <CardContent className="p-6 lg:p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Form Type Selection */}
@@ -56,7 +56,7 @@ export function ContactForm() {
                 value="sayHi"
                 checked={formType === "sayHi"}
                 onChange={(e) => setFormType(e.target.value as "sayHi")}
-                className="w-4 h-4 text-gray-900 border-gray-300 focus:ring-primary-400"
+                className="w-4 h-4 bg-white text-gray-950 border-gray-300 focus:ring-primary-400"
               />
               <span className="text-sm font-medium text-gray-700">Say Hi</span>
             </label>
@@ -67,7 +67,7 @@ export function ContactForm() {
                 value="getQuote"
                 checked={formType === "getQuote"}
                 onChange={(e) => setFormType(e.target.value as "getQuote")}
-                className="w-4 h-4 text-gray-900 border-gray-300 focus:ring-primary-400"
+                className="w-4 h-4 bg-white text-gray-950 border-gray-300 focus:ring-primary-400"
               />
               <span className="text-sm font-medium text-gray-700">Get a Quote</span>
             </label>
@@ -86,7 +86,7 @@ export function ContactForm() {
               value={formData.name}
               onChange={handleInputChange}
               required
-              className="border-gray-300 focus:border-primary-600 focus:ring-primary-400"
+              className="border-gray-300 bg-white focus:border-primary-600 focus:ring-primary-400"
             />
           </div>
 
@@ -103,7 +103,7 @@ export function ContactForm() {
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="border-gray-300 focus:border-primary-600 focus:ring-primary-400"
+              className="border-gray-300 bg-white focus:border-primary-600 focus:ring-primary-400"
             />
           </div>
 
@@ -120,12 +120,12 @@ export function ContactForm() {
               value={formData.message}
               onChange={handleInputChange}
               required
-              className="border-gray-300 focus:border-primary-600 focus:ring-primary-400 resize-none"
+              className="border-gray-300 bg-white focus:border-primary-600 focus:ring-primary-400 resize-none"
             />
           </div>
 
           {/* Submit Button */}
-          <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white py-3">
+          <Button type="submit" className="w-full bg-primary-600 hover:bg-primary-600/90 text-white py-3">
             Send Message
           </Button>
         </form>
