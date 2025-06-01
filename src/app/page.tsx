@@ -14,7 +14,7 @@ export default function HomePage() {
     <main className="min-h-screen">
       <Header />
 
-      <section className="flex flex-col gap-8 sm:gap-16">
+      <section className="flex flex-col gap-16 sm:gap-20">
         <section id="hero">
           <HeroSection />
         </section>

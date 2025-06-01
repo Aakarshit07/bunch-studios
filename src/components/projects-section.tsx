@@ -96,16 +96,16 @@ export function ProjectsSection() {
   }
 
   return (
-    <section className="py-16 lg:py-24 bg-gray-50">
+    <section className=" bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Mobile Layout - Stacked */}
         <div className="lg:hidden">
           {/* Header */}
           <div className="mb-12">
-            <h2 className="font-poppins font-bold text-[32px] leading-[42px] tracking-[0.2px] capitalize text-gray-900 mb-6">
+            <h2 className="font-bold text-[32px] tracking-[0.2px] capitalize text-gray-950 mb-6">
               We Are Masters Of Building Short Form Websites
             </h2>
-            <p className="font-poppins font-normal text-base leading-[140%] text-gray-600">
+            <p className="font-normal text-base leading-[140%] text-gray-700">
               At Bunch, we craft short-form websites that captivate, convert, and help your brand grow. We specialise in
               clean, minimal designs short form website built to give your business an edge.
             </p>
@@ -116,10 +116,10 @@ export function ProjectsSection() {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="cursor-pointer group bg-white rounded-lg overflow-hidden shadow-xs hover:shadow-md transition-shadow"
+                className="cursor-pointer group overflow-hidden"
                 onClick={() => handleProjectClick(project)}
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-64 overflow-hidden rounded-xl">
                   <Image
                     src={project.thumbnail || "/placeholder.svg"}
                     alt={project.title}
@@ -127,7 +127,7 @@ export function ProjectsSection() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-6 space-y-3">
+                <div className="py-4 space-y-3 bg-white">
                   <div className="text-sm text-gray-500">
                     {project.category} - {project.date}
                   </div>
@@ -146,12 +146,12 @@ export function ProjectsSection() {
           {/* Header */}
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-16">
             <div className="space-y-6">
-              <h2 className="font-poppins font-bold text-[40px] leading-[52px] tracking-[0.2px] capitalize text-gray-900">
+              <h2 className="font-bold text-[40px] leading-[52px] tracking-[0.2px] capitalize text-gray-950">
                 We Are Masters Of Building Short Form Websites
               </h2>
             </div>
             <div className="space-y-4">
-              <p className="font-poppins font-normal text-base leading-[140%] text-gray-600">
+              <p className="font-normal text-base leading-[140%] text-gray-700">
                 At Bunch, we craft short-form websites that captivate, convert, and help your brand grow. We specialise
                 in clean, minimal designs short form website built to give your business an edge.
               </p>
@@ -162,10 +162,10 @@ export function ProjectsSection() {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Large Featured Project - Left Side */}
             <div
-              className="cursor-pointer group bg-white rounded-lg overflow-hidden shadow-xs hover:shadow-md transition-shadow"
+              className="cursor-pointer group overflow-hidden"
               onClick={() => handleProjectClick(projects[0])}
             >
-              <div className="relative h-96 overflow-hidden">
+              <div className="relative h-[448px] overflow-hidden rounded-3xl">
                 <Image
                   src={projects[0].thumbnail || "/placeholder.svg"}
                   alt={projects[0].title}
@@ -173,7 +173,7 @@ export function ProjectsSection() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="p-6 space-y-3">
+              <div className="py-4 space-y-3 bg-white">
                 <div className="text-sm text-gray-500">
                   {projects[0].category} - {projects[0].date}
                 </div>
@@ -189,10 +189,10 @@ export function ProjectsSection() {
               {projects.slice(1, 5).map((project) => (
                 <div
                   key={project.id}
-                  className="cursor-pointer group bg-white rounded-lg overflow-hidden shadow-xs hover:shadow-md transition-shadow"
+                  className="cursor-pointer group  overflow-hidden"
                   onClick={() => handleProjectClick(project)}
                 >
-                  <div className="relative h-32 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden rounded-3xl">
                     <Image
                       src={project.thumbnail || "/placeholder.svg"}
                       alt={project.title}
@@ -200,7 +200,7 @@ export function ProjectsSection() {
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-4 space-y-2">
+                  <div className="py-4 space-y-2 bg-white">
                     <div className="text-xs text-gray-500">
                       {project.category} - {project.date}
                     </div>
