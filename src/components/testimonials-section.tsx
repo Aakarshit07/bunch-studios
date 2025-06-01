@@ -79,8 +79,8 @@ export function TestimonialsSection() {
                         className="rounded-full"
                       />
                       <div>
-                        <p className="font-bold text-gray-900">{testimonial.author}</p>
-                        <p className="text-sm text-gray-600">{testimonial.role}</p>
+                        <p className="font-bold text-secondary-700">{testimonial.author}</p>
+                        <p className="text-sm text-gray-700">{testimonial.role}</p>
                       </div>
                     </div>
                   </div>
