@@ -4,6 +4,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import Image from "next/image";
+import avatar_10 from "../../public/ava6.jpeg";
+import avatar_20 from "../../public/ava7.png";
+import avatar_30 from "../../public/ava10.png";
+
 
 const websiteMockups = [
   {
@@ -60,21 +64,21 @@ export function HeroSection() {
                 <div className="flex items-center space-x-1">
                   <div className="flex -space-x-2">
                     <Image
-                      src="/placeholder.svg?height=32&width=32&query=user avatar 1"
+                      src={avatar_10}
                       alt="User 1"
                       width={32}
                       height={32}
                       className="rounded-full border-2 border-white"
                     />
                     <Image
-                      src="/placeholder.svg?height=32&width=32&query=user avatar 2"
+                      src={avatar_20}
                       alt="User 2"
                       width={32}
                       height={32}
                       className="rounded-full border-2 border-white"
                     />
                     <Image
-                      src="/placeholder.svg?height=32&width=32&query=user avatar 3"
+                      src={avatar_30}
                       alt="User 3"
                       width={32}
                       height={32}
