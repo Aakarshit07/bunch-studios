@@ -5,6 +5,8 @@ import icon1 from "../../public/step1.png";
 import icon2 from "../../public/step2.png";
 import icon3 from "../../public/step3.png";
 import Image from "next/image";
+import { scrollToSection } from "@/lib/scroll-utils";
+
 const services = [
   {
     title: "Visual Identity & UI/UX Design",
@@ -38,6 +40,11 @@ const services = [
 ]
 
 export function ServicesSection() {
+
+  const handleGetStarted = () => {
+    scrollToSection("contact")
+  }
+
   return (
     <section className="py-16 lg:py-24 bg-primary-600 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,7 +91,7 @@ export function ServicesSection() {
                   ))}
                 </ul>
 
-                <Button className="bg-primary-600 hover:bg-primary-600/85 text-white font-medium px-6 py-2 rounded-lg">
+                <Button className="bg-primary-600 hover:bg-primary-600/85 text-white font-medium px-6 py-2 rounded-lg" onClick={handleGetStarted}>
                   Get Started
                 </Button>
               </div>

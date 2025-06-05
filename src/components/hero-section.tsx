@@ -7,25 +7,30 @@ import Image from "next/image";
 import avatar_10 from "../../public/ava6.jpeg";
 import avatar_20 from "../../public/ava7.png";
 import avatar_30 from "../../public/ava10.png";
+import heroImage_1 from "../../public/Hero Section Image 1.png";
+import heroImage_2 from "../../public/Hero Section Image 2.png";
+import heroImage_3 from "../../public/Hero Section Image 3.png";
+
+import { scrollToSection } from "@/lib/scroll-utils";
 
 
 const websiteMockups = [
   {
     id: 1,
     image:
-      "/placeholder.svg?height=400&width=300&query=amazing web designs business website",
+      heroImage_1,
     alt: "Amazing Web Designs for Business",
   },
   {
     id: 2,
     image:
-      "/placeholder.svg?height=400&width=300&query=business course platform website",
+      heroImage_2,
     alt: "Business Course Platform",
   },
   {
     id: 3,
     image:
-      "/placeholder.svg?height=400&width=300&query=styles collection website design",
+      heroImage_3,
     alt: "Styles Collection Website",
   },
 ];
@@ -34,6 +39,10 @@ export function HeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  const handleGetStarted = () => {
+    scrollToSection("contact")
+  }
+  
   return (
     <section className="pt-20 lg:pt-32 pb-16 lg:pb-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,6 +66,7 @@ export function HeroSection() {
               <Button
                 size="lg"
                 className="bg-primary-600 hover:bg-primary-600/90 text-white"
+                onClick={handleGetStarted}
               >
                 Get Started
               </Button>
@@ -120,7 +130,10 @@ export function HeroSection() {
                   } h-[400px]`} // Fixed height for all cards
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => {
+                    setActiveIndex(index)
+                    scrollToSection("portfolio")
+                  }}
                 >
                   <Image
                     src={mockup.image || "/placeholder.svg"}
@@ -143,7 +156,7 @@ export function HeroSection() {
             </div>
 
             {/* Mobile Carousel */}
-            <div className="md:hidden relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="md:hidden relative h-[400px] rounded-2xl overflow-hidden">
               <Image
                 src={websiteMockups[activeIndex].image || "/placeholder.svg"}
                 alt={websiteMockups[activeIndex].alt}

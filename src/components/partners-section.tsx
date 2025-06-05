@@ -1,14 +1,15 @@
 "use client"
 
 import Image from "next/image"
+import brightArcLogo from "../../public/BrightArc Logo.svg";
+import tradegeniusLogo from "../../public/Tradegenius Logo.webp";
+import greenH2Logo from "../../public/Green H2 Logo.svg";
+
 
 const partners = [
-  { name: "Sennheiser", logo: "/placeholder.svg?height=60&width=120&query=sennheiser logo" },
-  { name: "Allbirds", logo: "/placeholder.svg?height=60&width=120&query=allbirds logo" },
-  { name: "KOTN", logo: "/placeholder.svg?height=60&width=120&query=kotn logo" },
-  { name: "Spotify", logo: "/placeholder.svg?height=60&width=120&query=spotify logo" },
-  { name: "Airbnb", logo: "/placeholder.svg?height=60&width=120&query=airbnb logo" },
-  { name: "Stripe", logo: "/placeholder.svg?height=60&width=120&query=stripe logo" },
+  { name: "Bright Arc", logo: brightArcLogo },
+  { name: "Trade Genius", logo: tradegeniusLogo },
+  { name: "Green H2", logo: greenH2Logo },
 ]
 
 export function PartnersSection() {
