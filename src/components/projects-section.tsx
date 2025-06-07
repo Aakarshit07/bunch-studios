@@ -1,91 +1,9 @@
 "use client"
 import Image from "next/image"
 import { useStore } from "@/store/use-store"
+import { projects } from "@/lib/constants"
 
-const projects = [
-  {
-    id: "1",
-    title: "Bright Arc Web Development Project",
-    category: "Web Design",
-    date: "May 20, 2025",
-    description:
-      "By information about design the world to the best instructors, heatc helping By information about design the world to the best instructors, heatc helping",
-    images: [
-      "/placeholder.svg?height=600&width=300&query=bright arc website page 1",
-      "/placeholder.svg?height=600&width=300&query=bright arc website page 2",
-      "/placeholder.svg?height=600&width=300&query=bright arc website page 3",
-      "/placeholder.svg?height=600&width=300&query=bright arc website page 4",
-      "/placeholder.svg?height=600&width=300&query=bright arc website page 5",
-    ],
-    content: `Bright Arc is a counselling, career mentorship, and guidance platform committed to helping individuals find clarity and purpose. They approached us to design a website that reflects their mission of empowering their users to publish, update, and organise content effortlessly—keeping their platform fresh and relevant.
 
-We delivered a 7-page website that strikes the perfect balance between minimalism and functionality. The layout is intentionally light and reader-friendly—ideal for showcasing blogs, success stories, and engaging projects without overwhelming the user. Every page is thoughtfully designed to reflect the trust, care, and expertise Bright Arc brings to its audience.
-
-To ensure long-term scalability and ease of content management, we also built a custom CMS with a dynamic backend, empowering their team to publish, update, and organise content effortlessly—keeping the platform fresh and relevant. From visual identity to user experience, Bright Arc's digital presence now feels as empowering as their mission.`,
-    thumbnail: "/placeholder.svg?height=400&width=600&query=bright arc website homepage",
-    similarProjects: ["2", "3"],
-  },
-  {
-    id: "2",
-    title: "Value Logic Responsive UI Design",
-    category: "Web Design",
-    date: "June 20, 2025",
-    description: "A comprehensive business logic platform with responsive design and user-friendly interface.",
-    images: [
-      "/placeholder.svg?height=600&width=300&query=value logic website page 1",
-      "/placeholder.svg?height=600&width=300&query=value logic website page 2",
-      "/placeholder.svg?height=600&width=300&query=value logic website page 3",
-    ],
-    content:
-      "Value Logic required a complete redesign of their business platform to improve user experience and increase conversion rates.",
-    thumbnail: "/placeholder.svg?height=400&width=600&query=value logic website homepage",
-    similarProjects: ["1", "3"],
-  },
-  {
-    id: "3",
-    title: "Other Work UI Design Header goes here",
-    category: "Web Design",
-    date: "June 20, 2022",
-    description: "A clean, modern UI design for a corporate website with focus on user experience.",
-    images: [
-      "/placeholder.svg?height=600&width=300&query=other work website page 1",
-      "/placeholder.svg?height=600&width=300&query=other work website page 2",
-    ],
-    content: "A corporate client needed a fresh, modern website design that would reflect their brand values.",
-    thumbnail: "/placeholder.svg?height=400&width=600&query=other work website homepage",
-    similarProjects: ["1", "2"],
-  },
-  {
-    id: "4",
-    title: "Fineart Web Design Project",
-    category: "App Design",
-    date: "June 20, 2024",
-    description: "A modern art gallery website with interactive features and stunning visual presentation.",
-    images: [
-      "/placeholder.svg?height=600&width=300&query=fineart app page 1",
-      "/placeholder.svg?height=600&width=300&query=fineart app page 2",
-      "/placeholder.svg?height=600&width=300&query=fineart app page 3",
-    ],
-    content:
-      "Fineart gallery needed a sophisticated online presence that would showcase their collection while providing an intuitive browsing experience for art enthusiasts.",
-    thumbnail: "/placeholder.svg?height=400&width=600&query=fineart app homepage",
-    similarProjects: ["1", "3"],
-  },
-  {
-    id: "5",
-    title: "Value Logic Responsive UI Design",
-    category: "App Design",
-    date: "June 20, 2022",
-    description: "A comprehensive business logic platform with responsive design and user-friendly interface.",
-    images: [
-      "/placeholder.svg?height=600&width=300&query=value logic app page 1",
-      "/placeholder.svg?height=600&width=300&query=value logic app page 2",
-    ],
-    content: "Value Logic required a complete redesign of their business platform.",
-    thumbnail: "/placeholder.svg?height=400&width=600&query=value logic app homepage",
-    similarProjects: ["1", "4"],
-  },
-]
 
 export function ProjectsSection() {
   const { setSelectedProject, setProjectModalOpen } = useStore()
@@ -134,7 +52,7 @@ export function ProjectsSection() {
                   <h3 className="text-xl font-bold text-gray-950 group-hover:text-primary-600 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{project.description}</p>
+                  <p className="text-gray-700 text-sm leading-relaxed ">{project.description}</p>
                 </div>
               </div>
             ))}
@@ -180,7 +98,7 @@ export function ProjectsSection() {
                 <h3 className="text-2xl font-bold text-gray-950 group-hover:text-primary-600 transition-colors">
                   {projects[0].title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">{projects[0].description}</p>
+                <p className="text-gray-700 leading-relaxed">{projects[0].description}</p>
               </div>
             </div>
 
