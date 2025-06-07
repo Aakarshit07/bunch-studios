@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { CrossIcon, Menu, X } from "lucide-react";
 import Image from "next/image";
 import bunch_logo from "../../../public/bunch-main-logo.svg";
 import { scrollToSection } from "@/lib/scroll-utils";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -26,24 +27,24 @@ const navigation = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const router = useRouter()
-  const pathname = usePathname()
+  const router = useRouter();
+  const pathname = usePathname();
 
   const handleNavClick = (href: string) => {
-   // Close mobile menu if open
-    setIsMobileMenuOpen(false)
+    // Close mobile menu if open
+    setIsMobileMenuOpen(false);
     // Extract section ID without the hash
-    const sectionId = href.replace("#", "")
+    const sectionId = href.replace("#", "");
     // If we're already on the homepage, just scroll
     if (pathname === "/") {
-      scrollToSection(sectionId)
+      scrollToSection(sectionId);
     } else {
       // If on another page, navigate to homepage first
-      router.push("/")
+      router.push("/");
       // Wait for navigation to complete, then scroll
-      scrollToSection(sectionId)
+      scrollToSection(sectionId);
+    }
   };
-  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,28 +91,32 @@ export function Header() {
           <div className="lg:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <button className="p-2">
+                <Button className="p-2">
                   <Menu className="h-6 w-6" />
-                </button>
+                </Button>
               </SheetTrigger>
               <SheetContent
                 side="top"
-                className="w-full h-full pt-16 pb-8 px-6"
+                className="w-full h-full py-6 px-4 [&>button:first-of-type]:hidden"
               >
-                <SheetHeader className="pb-4 mb-4">
-                  <SheetTitle className="flex items-center">
-                    <Image
-                      src={bunch_logo || "/placeholder.svg"}
-                      alt="bunch studios"
-                      width={80}
-                      height={68}
-                      quality={70}
-      
-                    />
-                  </SheetTitle>
+                <SheetHeader className="mb-6">
+                  <div className="w-full flex items-center justify-between">
+                    <SheetTitle>
+                      <Image
+                        src={bunch_logo || "/placeholder.svg"}
+                        alt="bunch studios"
+                        width={80}
+                        height={68}
+                        quality={70}
+                      />
+                    </SheetTitle>
+                    <SheetClose>
+                      <X width={28} height={28} />
+                    </SheetClose>
+                  </div>
                 </SheetHeader>
                 <div className="flex flex-col items-start justify-start h-full">
-                  <nav className="flex flex-col items-start space-y-4">
+                  <nav className="flex flex-col items-start">
                     {navigation.map((item) => (
                       <Button
                         key={item.name}

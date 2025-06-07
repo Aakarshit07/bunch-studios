@@ -103,6 +103,8 @@ export function Footer() {
                     key={item.name}
                     href={item.href}
                     className="text-white/80 hover:text-white transition-colors text-sm"
+                    aria-label={item.name}
+                    target="_blank"
                   >
                     {item.name}
                   </Link>
@@ -117,6 +119,7 @@ export function Footer() {
                     href={social.href}
                     className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
                     aria-label={social.label}
+                    target="_blank"
                   >
                     <social.icon className="h-4 w-4" />
                   </Link>
@@ -223,6 +226,8 @@ export function Footer() {
                 <Link
                   href={item.href}
                   className="text-white/80 hover:text-white text-sm"
+                  aria-label={item.name}
+                  target="_blank"
                 >
                   {item.name}
                 </Link>

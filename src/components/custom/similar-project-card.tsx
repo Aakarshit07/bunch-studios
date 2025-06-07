@@ -21,7 +21,7 @@ const SimilarProjectCard: React.FC<SimilarProjectsProps> = ({similarProjects}) =
         <h3 className="text-2xl font-bold text-gray-900 mb-6">
           See Similar Projects
         </h3>
-        <Carousel opts={{ align: "start" }}>
+        <Carousel opts={{ align: "start", loop: true }}>
           <CarouselContent>
             {similarProjects.map((project) => (
               <CarouselItem

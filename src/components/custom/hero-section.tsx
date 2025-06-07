@@ -10,7 +10,13 @@ import avatar_30 from "../../../public/ava10.png";
 import heroImage_1 from "../../../public/Hero Section Image 1.png";
 import heroImage_2 from "../../../public/Hero Section Image 2.png";
 import heroImage_3 from "../../../public/Hero Section Image 3.png";
-
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { scrollToSection } from "@/lib/scroll-utils";
 
 
@@ -158,28 +164,31 @@ export function HeroSection() {
             </div>
 
             {/* Mobile Carousel */}
-            <div className="md:hidden relative h-[400px] rounded-2xl overflow-hidden">
-              <Image
-                src={websiteMockups[activeIndex].image || "/placeholder.svg"}
-                alt={websiteMockups[activeIndex].alt}
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            {/* Dots navigation */}
-            <div className="flex justify-center mt-6 space-x-2">
-              {websiteMockups.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === activeIndex
-                      ? "bg-primary-600 scale-110"
-                      : "bg-gray-300"
-                  }`}
-                  onClick={() => setActiveIndex(index)}
-                />
-              ))}
+            <div className="md:hidden">
+              <Carousel opts={{ align: "center", loop: true }}>
+                  <CarouselContent>
+                    {websiteMockups.map(
+                      (item, index: number) => (
+                        <CarouselItem key={`${item.id}-${index}`} className="basis-full">
+                          <div className="relative h-96 rounded-2xl overflow-hidden shadow-lg">
+                            <Image
+                              src={item.image || "/placeholder.svg"}
+                              alt={`${item.alt} - Page ${
+                                index + 1
+                              }`}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        </CarouselItem>
+                      )
+                    )}
+                  </CarouselContent>
+                  <div className="flex justify-center items-center gap-4 mt-8">
+                    <CarouselPrevious className="static translate-y-0 text-primary-900 w-6 h-6" />
+                    <CarouselNext className="static translate-y-0 text-primary-900 w-6 h-6" />
+                  </div>
+                </Carousel>
             </div>
           </div>
         </div>

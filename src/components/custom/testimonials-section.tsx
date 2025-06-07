@@ -69,7 +69,7 @@ export function TestimonialsSection() {
           </div>
 
           <Carousel
-            opts={{ align: "center" }}
+            opts={{ align: "center", loop: true }}
           >
             <CarouselContent>
               {testimonials.map((testimonial) => (

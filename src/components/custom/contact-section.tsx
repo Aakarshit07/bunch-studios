@@ -1,71 +1,77 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { useRouter } from "next/navigation"
-import { Loader2 } from "lucide-react"
+import type React from "react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
-import { validationRules } from "@/lib/validation"
-import { useFormValidation } from "@/hooks/useFormValidation"
+import { validationRules } from "@/lib/validation";
+import { useFormValidation } from "@/hooks/useFormValidation";
 
 const contactFormRules = {
   name: validationRules.name,
   email: validationRules.email,
   message: validationRules.message,
-}
+};
 
 const initialFormData = {
   name: "",
   email: "",
   message: "",
-}
+};
 
 export function ContactSection() {
-  const [formType, setFormType] = useState<"sayHi" | "getQuote">("sayHi")
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formType, setFormType] = useState<"sayHi" | "getQuote">("sayHi");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const router = useRouter()
+  const router = useRouter();
 
-  const { formData, errors, handleInputChange, handleBlur, validateAllFields, resetForm } = useFormValidation({
+  const {
+    formData,
+    errors,
+    handleInputChange,
+    handleBlur,
+    validateAllFields,
+    resetForm,
+  } = useFormValidation({
     initialData: initialFormData,
     validationRules: contactFormRules,
-  })
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
+    e.preventDefault();
     if (!validateAllFields()) {
-      return
+      return;
     }
-
-    setIsSubmitting(true)
-
+    setIsSubmitting(true);
     try {
       // Simulate API call with a delay
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // Handle form submission here
-      console.log("Form submitted:", { formType, ...formData })
+      console.log("Form submitted:", { formType, ...formData });
 
       // Reset form
-      resetForm()
+      resetForm();
 
       // Navigate to thank you page
-      router.push("/thank-you")
+      router.push("/thank-you");
     } catch (error) {
-      console.error("Error submitting form:", error)
+      console.error("Error submitting form:", error);
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <section className="bg-secondary-100 rounded-xl mx-6 sm:mx-16" id="contact">
       <div className="flex flex-row justify-center items-center px-4 sm:px-10 py-8">
         {/* Left Content - Form */}
         <div className="space-y-6">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">Still Got Questions? Message Us</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+            Still Got Questions? Message Us
+          </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Form Type Selection */}
@@ -78,7 +84,9 @@ export function ContactSection() {
                   onChange={() => setFormType("sayHi")}
                   className="w-4 h-4 text-gray-900 border-gray-300 bg-white focus:ring-primary-400"
                 />
-                <span className="text-sm font-medium text-gray-700">Say Hi</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Say Hi
+                </span>
               </label>
               <label className="flex items-center space-x-2 cursor-pointer">
                 <input
@@ -88,13 +96,18 @@ export function ContactSection() {
                   onChange={() => setFormType("getQuote")}
                   className="w-4 h-4 text-gray-900 border-gray-300 bg-white focus:ring-primary-400"
                 />
-                <span className="text-sm font-medium text-gray-700">Get a Quote</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Get a Quote
+                </span>
               </label>
             </div>
 
             {/* Name Field */}
             <div className="space-y-2">
-              <label htmlFor="contact-name" className="text-sm font-medium text-gray-700">
+              <label
+                htmlFor="contact-name"
+                className="text-sm font-medium text-gray-700"
+              >
                 Name
               </label>
               <input
@@ -110,10 +123,15 @@ export function ContactSection() {
                   errors.name ? "border-danger-50" : "border-gray-300"
                 }`}
                 aria-invalid={errors.name ? "true" : "false"}
-                aria-describedby={errors.name ? "contact-name-error" : undefined}
+                aria-describedby={
+                  errors.name ? "contact-name-error" : undefined
+                }
               />
               {errors.name && (
-                <p id="contact-name-error" className="text-sm text-danborder-danger-50 mt-1">
+                <p
+                  id="contact-name-error"
+                  className="text-sm text-danger-50 border-danger-50 mt-1"
+                >
                   {errors.name}
                 </p>
               )}
@@ -121,7 +139,10 @@ export function ContactSection() {
 
             {/* Email Field */}
             <div className="space-y-2">
-              <label htmlFor="contact-email" className="text-sm font-medium text-gray-700">
+              <label
+                htmlFor="contact-email"
+                className="text-sm font-medium text-gray-700"
+              >
                 Email*
               </label>
               <input
@@ -137,10 +158,15 @@ export function ContactSection() {
                   errors.email ? "border-danger-50" : "border-gray-300"
                 }`}
                 aria-invalid={errors.email ? "true" : "false"}
-                aria-describedby={errors.email ? "contact-email-error" : undefined}
+                aria-describedby={
+                  errors.email ? "contact-email-error" : undefined
+                }
               />
               {errors.email && (
-                <p id="contact-email-error" className="text-sm text-danborder-danger-50 mt-1">
+                <p
+                  id="contact-email-error"
+                  className="text-sm text-danger-50 border-danger-50 mt-1"
+                >
                   {errors.email}
                 </p>
               )}
@@ -148,9 +174,15 @@ export function ContactSection() {
 
             {/* Message Field */}
             <div className="space-y-2">
-              <label htmlFor="contact-message" className="text-sm font-medium text-gray-700">
-                Message*
-              </label>
+              <div className="flex items-center justify-between gap-4">
+                <label
+                  htmlFor="contact-message"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Message*
+                </label>
+                <span className="text-xs text-gray-700">{formData.message.length} / 300</span>
+              </div>
               <textarea
                 id="contact-message"
                 name="message"
@@ -165,10 +197,15 @@ export function ContactSection() {
                   errors.message ? "border-danger-50" : "border-gray-300"
                 }`}
                 aria-invalid={errors.message ? "true" : "false"}
-                aria-describedby={errors.message ? "contact-message-error" : undefined}
+                aria-describedby={
+                  errors.message ? "contact-message-error" : undefined
+                }
               />
               {errors.message && (
-                <p id="contact-message-error" className="text-sm text-danborder-danger-50 mt-1">
+                <p
+                  id="contact-message-error"
+                  className="text-sm text-danger-50 border-danger-50 mt-1"
+                >
                   {errors.message}
                 </p>
               )}
@@ -180,12 +217,17 @@ export function ContactSection() {
               className="w-full bg-primary-600 hover:bg-primary-500/90 text-white py-3"
               disabled={isSubmitting}
             >
-              {isSubmitting && <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Sending..</> }
+              {isSubmitting && (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Sending..
+                </>
+              )}
               {!isSubmitting && "Send Message"}
             </Button>
           </form>
         </div>
       </div>
     </section>
-  )
+  );
 }

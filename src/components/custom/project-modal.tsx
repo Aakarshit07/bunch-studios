@@ -5,6 +5,7 @@ import { useSharedStore } from "@/store/useSharedStore";
 import { ContactForm } from "@/components/custom/contact-form";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -21,18 +22,14 @@ import SimilarProjectCard from "./similar-project-card";
 import SafeHtmlRenderer from "@/lib/safeHtmlRenderer";
 import { projects } from "@/lib/constants";
 import Loaders from "../skletons/Loader";
-
+import { X } from "lucide-react";
 
 export function ProjectModal() {
-  const {
-    selectedProject,
-    isProjectModalOpen,
-    setProjectModalOpen,
-  } = useSharedStore();
+  const { selectedProject, isProjectModalOpen, setProjectModalOpen } =
+    useSharedStore();
   const [isLoading, setIsLoading] = useState(true);
   const [similarProjects, setSimilarProjects] = useState<any[]>([]);
 
-  
   useEffect(() => {
     if (selectedProject) {
       setIsLoading(true);
@@ -60,17 +57,24 @@ export function ProjectModal() {
     <Sheet open={isProjectModalOpen} onOpenChange={setProjectModalOpen}>
       <SheetContent
         side="right"
-        className="w-full sm:max-w-[1000px] overflow-y-auto py-6 px-4 sm:px-10"
+        className="w-full sm:max-w-[1000px] overflow-y-auto py-6 px-4 sm:px-10 [&>button:first-of-type]:hidden"
       >
         <SheetHeader className="relative border-b mb-6">
-          <SheetTitle className="text-left text-xl sm:text-3xl font-bold text-gray-950 underline">
-            <Link href={"#"} target="_blank">
-              {selectedProject.title}
-            </Link>
-          </SheetTitle>
-          <p className="text-gray-700 text-sm font-normal w-full text-left">
-            {selectedProject.category} - {selectedProject.date}
-          </p>
+          <div className="flex items-start justify-between">
+            <div className="mt-2">
+              <SheetTitle className="text-left text-xl sm:text-3xl font-bold text-gray-950 underline">
+                <Link href={"#"} target="_blank">
+                  {selectedProject.title}
+                </Link>
+              </SheetTitle>
+              <p className="text-gray-700 text-sm font-normal w-full text-left">
+                {selectedProject.category} - {selectedProject.date}
+              </p>
+            </div>
+            <SheetClose className="">
+              <X width={28} height={28} />
+            </SheetClose>
+          </div>
         </SheetHeader>
 
         <div>
@@ -110,13 +114,13 @@ export function ProjectModal() {
 
               {/* Description */}
               <div className="bg-white space-y-6 flex flex-col gap-8 mt-6">
-                <div  className="text-gray-700 leading-relaxed whitesdiv ace-pre-line text-sm">
-                  <SafeHtmlRenderer htmlContent={selectedProject.content} />                
+                <div className="text-gray-700 leading-relaxed whitesdiv ace-pre-line text-sm">
+                  <SafeHtmlRenderer htmlContent={selectedProject.content} />
                 </div>
 
                 {/* Similar Projects Carousel */}
                 {similarProjects.length > 0 && (
-                  <SimilarProjectCard similarProjects={similarProjects}/>
+                  <SimilarProjectCard similarProjects={similarProjects} />
                 )}
 
                 {/* Contact Form */}
