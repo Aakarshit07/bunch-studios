@@ -1,16 +1,11 @@
-"use client"
-
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, ArrowLeft, Sparkles, Clock, MessageSquare, FileText } from "lucide-react"
+import DefaultLayout from "@/components/layouts/DefaultLayout"
 
 export default function ThankYouPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      <Header />
-
+    <DefaultLayout>
       <div className="pt-32 pb-16 lg:pb-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
@@ -128,8 +123,6 @@ export default function ThankYouPage() {
           </div>
         </div>
       </div>
-
-      <Footer />
-    </main>
+    </DefaultLayout>
   )
 }

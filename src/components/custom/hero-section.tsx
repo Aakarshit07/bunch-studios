@@ -4,12 +4,12 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import Image from "next/image";
-import avatar_10 from "../../public/ava6.jpeg";
-import avatar_20 from "../../public/ava7.png";
-import avatar_30 from "../../public/ava10.png";
-import heroImage_1 from "../../public/Hero Section Image 1.png";
-import heroImage_2 from "../../public/Hero Section Image 2.png";
-import heroImage_3 from "../../public/Hero Section Image 3.png";
+import avatar_10 from "../../../public/ava6.jpeg";
+import avatar_20 from "../../../public/ava7.png";
+import avatar_30 from "../../../public/ava10.png";
+import heroImage_1 from "../../../public/Hero Section Image 1.png";
+import heroImage_2 from "../../../public/Hero Section Image 2.png";
+import heroImage_3 from "../../../public/Hero Section Image 3.png";
 
 import { scrollToSection } from "@/lib/scroll-utils";
 
@@ -140,7 +140,9 @@ export function HeroSection() {
                     alt={mockup.alt}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 320px"
+                    style={{width: "100%", height: "100%"}}
+                    sizes="(max-width: 768px) 100vw, 320px"     
+                    quality={80}
                   />
                   {/* Overlay for non-active cards */}
                   <div
@@ -172,7 +174,7 @@ export function HeroSection() {
                   key={index}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === activeIndex
-                      ? "bg-primary scale-110"
+                      ? "bg-primary-600 scale-110"
                       : "bg-gray-300"
                   }`}
                   onClick={() => setActiveIndex(index)}

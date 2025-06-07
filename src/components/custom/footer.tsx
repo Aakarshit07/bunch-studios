@@ -1,45 +1,54 @@
 "use client"
-import { Twitter, Instagram, Linkedin, Youtube } from "lucide-react"
+
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
-import bunch_logo from "../../public/bunch_studios_logo.png"
+import bunch_logo from "../../../public/bunch_studios_logo.png"
+import { footerSections, legalLinks, socialLinks } from "@/lib/constants"
+import { usePathname, useRouter } from "next/navigation"
 
-const footerSections = {
-  services: [
-    { name: "UI/UX Design", href: "#services" },
-    { name: "Web Development", href: "#services" },
-    { name: "CMS Support", href: "#services" },
-    { name: "On-Page SEO", href: "#services" },
-  ],
-  jumpTo: [
-    { name: "Header", href: "#header" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Services", href: "#services" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact us", href: "#contact" },
-  ],
-}
-
-const socialLinks = [
-  { icon: Twitter, href: "https://x.com/bunch_studios", label: "Twitter" },
-  { icon: Instagram, href: "https://www.instagram.com/bunch_studios07", label: "Instagram" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/bunch-studios/", label: "LinkedIn" },
-  { icon: Youtube, href: "/", label: "YouTube" },
-]
-
-const legalLinks = [
-  { name: "Terms of Service", href: "terms-and-conditions" },
-  { name: "Privacy Policy", href: "privacy-policy" },
-  { name: "Sitemap", href: "#" },
-]
 
 export function Footer() {
   const [openSection, setOpenSection] = useState<string | null>(null)
+  const router = useRouter()
+  const pathname = usePathname()
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? null : section)
   }
+
+   const handleSectionClick = (href: string, e: React.MouseEvent) => {
+    e.preventDefault()
+    // Extract the section ID from href (e.g., "#services" from "/#services")
+    const sectionId = href.replace("/#", "#")
+    // If user is on homepage, just scroll to section
+    if (pathname === "/") {
+      const element = document.querySelector(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    } else {
+      // If user is on another page, navigate to homepage first, then scroll
+      router.push("/")
+      // Wait for navigation to complete, then scroll to section
+      const element = document.querySelector(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+  }
+
+  // Render navigation link with smart behavior
+  const renderNavLink = (item: { name: string; href: string }) => (
+    <Link
+      key={item.name}
+      href={item.href}
+      onClick={(e) => handleSectionClick(item.href, e)}
+      className="text-white/80 hover:text-white transition-colors text-sm"
+    >
+      {item.name}
+    </Link>
+  )
 
   return (
     <footer className="bg-primary-600 text-white">
@@ -63,20 +72,7 @@ export function Footer() {
                 <h3 className="text-lg font-semibold text-white">Services</h3>
                 <ul className="space-y-2">
                   {footerSections.services.map((item) => (
-                    <li key={item.name}>
-                      <Link
-                        href={
-                          typeof window !== "undefined" &&
-                          !window.location.pathname.includes("/#") &&
-                          window.location.pathname !== "/"
-                            ? `/${item.href}`
-                            : item.href
-                        }
-                        className="text-white/80 hover:text-white transition-colors text-sm"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
+                    <li key={item.name}>{renderNavLink(item)}</li>
                   ))}
                 </ul>
               </div>
@@ -86,20 +82,7 @@ export function Footer() {
                 <h3 className="text-lg font-semibold text-white">Jump to</h3>
                 <ul className="space-y-2">
                   {footerSections.jumpTo.map((item) => (
-                    <li key={item.name}>
-                      <Link
-                        href={
-                          typeof window !== "undefined" &&
-                          !window.location.pathname.includes("/#") &&
-                          window.location.pathname !== "/"
-                            ? `/${item.href}`
-                            : item.href
-                        }
-                        className="text-white/80 hover:text-white transition-colors text-sm"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
+                    <li key={item.name}>{renderNavLink(item)}</li>
                   ))}
                 </ul>
               </div>
@@ -175,20 +158,7 @@ export function Footer() {
                 <div className="pb-3">
                   <ul className="space-y-2">
                     {footerSections.services.map((item) => (
-                      <li key={item.name}>
-                        <Link
-                          href={
-                            typeof window !== "undefined" &&
-                            !window.location.pathname.includes("/#") &&
-                            window.location.pathname !== "/"
-                              ? `/${item.href}`
-                              : item.href
-                          }
-                          className="text-white/80 hover:text-white text-sm"
-                        >
-                          {item.name}
-                        </Link>
-                      </li>
+                      <li key={item.name}>{renderNavLink(item)}</li>
                     ))}
                   </ul>
                 </div>
@@ -212,20 +182,7 @@ export function Footer() {
                 <div className="pb-3">
                   <ul className="space-y-2">
                     {footerSections.jumpTo.map((item) => (
-                      <li key={item.name}>
-                        <Link
-                          href={
-                            typeof window !== "undefined" &&
-                            !window.location.pathname.includes("/#") &&
-                            window.location.pathname !== "/"
-                              ? `/${item.href}`
-                              : item.href
-                          }
-                          className="text-white/80 hover:text-white text-sm"
-                        >
-                          {item.name}
-                        </Link>
-                      </li>
+                     <li key={item.name}>{renderNavLink(item)}</li>
                     ))}
                   </ul>
                 </div>

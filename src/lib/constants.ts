@@ -1,4 +1,5 @@
 import { Project } from "@/types/project.types";
+import { Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
 export const projects: Project[] = [
   {
@@ -140,3 +141,37 @@ export const projects: Project[] = [
 //       "/placeholder.svg?height=400&width=600&query=fineart app homepage",
 //     similarProjects: ["1", "3"],
 //   },
+
+
+/**
+ * Footer sections Constants
+ */
+
+export const footerSections = {
+  services: [
+    { name: "UI/UX Design", href: "#services" },
+    { name: "Web Development", href: "#services" },
+    { name: "CMS Support", href: "#services" },
+    { name: "On-Page SEO", href: "#services" },
+  ],
+  jumpTo: [
+    { name: "Header", href: "#header" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "Services", href: "#services" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact us", href: "#contact" },
+  ],
+}
+
+export const socialLinks = [
+  { icon: Twitter, href: "https://x.com/bunch_studios", label: "Twitter" },
+  { icon: Instagram, href: "https://www.instagram.com/bunch_studios07", label: "Instagram" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/bunch-studios/", label: "LinkedIn" },
+  { icon: Youtube, href: "/", label: "YouTube" },
+]
+
+export const legalLinks = [
+  { name: "Terms of Service", href: "terms-and-conditions" },
+  { name: "Privacy Policy", href: "privacy-policy" },
+  { name: "Sitemap", href: "#" },
+]

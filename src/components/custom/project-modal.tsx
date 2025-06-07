@@ -1,24 +1,26 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useStore } from "@/store/use-store";
-import { ContactForm } from "@/components/contact-form";
-import { Spinner } from "@/components/ui/spinner";
+import { useSharedStore } from "@/store/useSharedStore";
+import { ContactForm } from "@/components/custom/contact-form";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
-  SheetClose,
 } from "@/components/ui/sheet";
 import Link from "next/link";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import SimilarProjectCard from "./similar-project-card";
 import SafeHtmlRenderer from "@/lib/safeHtmlRenderer";
+import { projects } from "@/lib/constants";
+import Loaders from "../skletons/Loader";
 
 
 export function ProjectModal() {
@@ -26,8 +28,7 @@ export function ProjectModal() {
     selectedProject,
     isProjectModalOpen,
     setProjectModalOpen,
-    setSelectedProject,
-  } = useStore();
+  } = useSharedStore();
   const [isLoading, setIsLoading] = useState(true);
   const [similarProjects, setSimilarProjects] = useState<any[]>([]);
 
@@ -40,33 +41,6 @@ export function ProjectModal() {
         selectedProject.similarProjects &&
         selectedProject.similarProjects.length > 0
       ) {
-        const projects = [
-          {
-            id: "1",
-            title: "Bright Arc Web Development Project",
-            category: "Web Design",
-            date: "May 20, 2025",
-            thumbnail:
-              "/placeholder.svg?height=200&width=300&query=bright arc website homepage",
-          },
-          {
-            id: "2",
-            title: "Value Logic Responsive UI Design",
-            category: "Web Design",
-            date: "June 20, 2022",
-            thumbnail:
-              "/placeholder.svg?height=200&width=300&query=value logic website homepage",
-          },
-          {
-            id: "3",
-            title: "Fineart Web Design Project",
-            category: "App Design",
-            date: "June 20, 2024",
-            thumbnail:
-              "/placeholder.svg?height=200&width=300&query=fineart app homepage",
-          },
-        ];
-
         const similar = projects.filter((p) =>
           selectedProject.similarProjects.includes(p.id)
         );
@@ -99,10 +73,10 @@ export function ProjectModal() {
           </p>
         </SheetHeader>
 
-        <div className="">
+        <div>
           {isLoading ? (
-            <div className="flex items-center justify-center h-64">
-              <Spinner size="lg" />
+            <div className="w-full min-h-screen flex items-center justify-center">
+              <Loaders />
             </div>
           ) : (
             <>
@@ -127,6 +101,10 @@ export function ProjectModal() {
                       )
                     )}
                   </CarouselContent>
+                  <div className="flex justify-center items-center gap-4 mt-8">
+                    <CarouselPrevious className="static translate-y-0 text-primary-900 w-6 h-6" />
+                    <CarouselNext className="static translate-y-0 text-primary-900 w-6 h-6" />
+                  </div>
                 </Carousel>
               </div>
 
@@ -138,7 +116,7 @@ export function ProjectModal() {
 
                 {/* Similar Projects Carousel */}
                 {similarProjects.length > 0 && (
-                  <SimilarProjectCard similarProjects={similarProjects} />
+                  <SimilarProjectCard similarProjects={similarProjects}/>
                 )}
 
                 {/* Contact Form */}

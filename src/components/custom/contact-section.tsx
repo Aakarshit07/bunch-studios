@@ -177,7 +177,7 @@ export function ContactSection() {
             {/* Submit Button */}
             <Button
               type="submit"
-              className="w-full bg-primary-600 hover:bg-primary/90 text-white py-3"
+              className="w-full bg-primary-600 hover:bg-primary-500/90 text-white py-3"
               disabled={isSubmitting}
             >
               {isSubmitting && <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Sending..</> }

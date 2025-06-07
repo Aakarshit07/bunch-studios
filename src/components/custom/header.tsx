@@ -1,38 +1,57 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
-import Image from "next/image"
-import bunch_logo from "../../public/bunch-main-logo.svg"
-import { scrollToSection } from "@/lib/scroll-utils"
-import { Button } from "./ui/button"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import bunch_logo from "../../../public/bunch-main-logo.svg";
+import { scrollToSection } from "@/lib/scroll-utils";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Button } from "../ui/button";
+import { usePathname, useRouter } from "next/navigation";
 
 const navigation = [
   { name: "Services", href: "#services" },
   { name: "Portfolio", href: "#portfolio" },
   { name: "Testimonials", href: "#testimonials" },
   { name: "Contact Us", href: "#contact" },
-]
+];
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const handleNavClick = (href: string) => {
+   // Close mobile menu if open
+    setIsMobileMenuOpen(false)
+    // Extract section ID without the hash
+    const sectionId = href.replace("#", "")
+    // If we're already on the homepage, just scroll
+    if (pathname === "/") {
+      scrollToSection(sectionId)
+    } else {
+      // If on another page, navigate to homepage first
+      router.push("/")
+      // Wait for navigation to complete, then scroll
+      scrollToSection(sectionId)
+  };
+  }
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const handleNavClick = (href: string) => {
-    const sectionId = href.replace("#", "")
-    scrollToSection(sectionId)
-    setIsMobileMenuOpen(false)
-  }
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
@@ -44,7 +63,14 @@ export function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20 ">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image src={bunch_logo || "/placeholder.svg"} alt="bunch studios" width={80} height={68} />
+            <Image
+              src={bunch_logo || "/placeholder.svg"}
+              alt="bunch studios"
+              width={80}
+              height={68}
+              style={{ width: "100%", height: "100%" }}
+              quality={70}
+            />
           </Link>
 
           {/* Desktop Navigation - Moved to right */}
@@ -68,12 +94,22 @@ export function Header() {
                   <Menu className="h-6 w-6" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="top" className="w-full h-full pt-16 pb-8 px-6">
+              <SheetContent
+                side="top"
+                className="w-full h-full pt-16 pb-8 px-6"
+              >
                 <SheetHeader className="pb-4 mb-4">
-                <SheetTitle className="flex items-center">
-                  <Image src={bunch_logo || "/placeholder.svg"} alt="bunch studios" width={80} height={68} />
-                </SheetTitle>
-              </SheetHeader>
+                  <SheetTitle className="flex items-center">
+                    <Image
+                      src={bunch_logo || "/placeholder.svg"}
+                      alt="bunch studios"
+                      width={80}
+                      height={68}
+                      quality={70}
+      
+                    />
+                  </SheetTitle>
+                </SheetHeader>
                 <div className="flex flex-col items-start justify-start h-full">
                   <nav className="flex flex-col items-start space-y-4">
                     {navigation.map((item) => (
@@ -93,5 +129,5 @@ export function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }

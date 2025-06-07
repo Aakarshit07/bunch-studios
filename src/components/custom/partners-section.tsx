@@ -1,9 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import brightArcLogo from "../../public/BrightArc Logo.svg";
-import tradegeniusLogo from "../../public/Tradegenius Logo.webp";
-import greenH2Logo from "../../public/Green H2 Logo.svg";
+import brightArcLogo from "../../../public/BrightArc Logo.svg";
+import tradegeniusLogo from "../../../public/Tradegenius Logo.webp";
+import greenH2Logo from "../../../public/Green H2 Logo.svg";
 
 
 const partners = [

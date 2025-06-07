@@ -1,17 +1,7 @@
+import { Project } from "@/types/project.types"
 import { create } from "zustand"
 
-interface Project {
-  id: string
-  title: string
-  category: string
-  date: string
-  description: string
-  images: string[]
-  content: string
-  similarProjects: string[]
-}
-
-interface StoreState {
+interface ISharedStore {
   selectedProject: Project | null
   isProjectModalOpen: boolean
   isMobileMenuOpen: boolean
@@ -20,7 +10,7 @@ interface StoreState {
   setMobileMenuOpen: (open: boolean) => void
 }
 
-export const useStore = create<StoreState>((set) => ({
+export const useSharedStore = create<ISharedStore>((set) => ({
   selectedProject: null,
   isProjectModalOpen: false,
   isMobileMenuOpen: false,

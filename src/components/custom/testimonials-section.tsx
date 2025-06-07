@@ -1,13 +1,18 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
-import avatar_1 from "../../public/ava1.jpeg";
-import avatar_2 from "../../public/ava2.jpeg";
-import avatar_3 from "../../public/ava3.jpeg";
-import avatar_4 from "../../public/ava4.jpeg";
-import avatar_5 from "../../public/ava5.jpeg";
-
+import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import avatar_1 from "../../../public/ava1.jpeg";
+import avatar_2 from "../../../public/ava2.jpeg";
+import avatar_3 from "../../../public/ava3.jpeg";
+import avatar_4 from "../../../public/ava4.jpeg";
+import avatar_5 from "../../../public/ava5.jpeg";
 
 const testimonials = [
   {
@@ -50,7 +55,7 @@ const testimonials = [
     role: "Startup Founder",
     avatar: avatar_5,
   },
-]
+];
 
 export function TestimonialsSection() {
   return (
@@ -58,16 +63,25 @@ export function TestimonialsSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">What Our Clients Say</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              What Our Clients Say
+            </h2>
           </div>
 
-          <Carousel opts={{ align: "center" }}>
+          <Carousel
+            opts={{ align: "center" }}
+          >
             <CarouselContent>
               {testimonials.map((testimonial) => (
-                <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem
+                  key={testimonial.id}
+                  className="md:basis-1/2 lg:basis-1/3"
+                >
                   <div className="flex flex-col max-w-[600px] min-w-[300px] mx-auto">
                     <div className="bg-primary-900 text-white p-6 lg:p-8 rounded-3xl relative mb-8 w-full">
-                      <p className="text-sm leading-relaxed">"{testimonial.content}"</p>
+                      <p className="text-sm leading-relaxed">
+                        "{testimonial.content}"
+                      </p>
                       <div className="absolute -bottom-3 left-8 w-6 h-6 bg-primary-900 rotate-45"></div>
                     </div>
                     <div className="flex items-center space-x-3 pl-4">
@@ -79,17 +93,26 @@ export function TestimonialsSection() {
                         className="rounded-full"
                       />
                       <div>
-                        <p className="font-bold text-secondary-700">{testimonial.author}</p>
-                        <p className="text-sm text-gray-700">{testimonial.role}</p>
+                        <p className="font-bold text-secondary-700">
+                          {testimonial.author}
+                        </p>
+                        <p className="text-sm text-gray-700">
+                          {testimonial.role}
+                        </p>
                       </div>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
+            <div className="flex justify-center items-center gap-4 mt-8">
+              <CarouselPrevious className="static translate-y-0 text-primary-900 w-6 h-6" />
+              <CarouselNext className="static translate-y-0 text-primary-900 w-6 h-6" />
+            </div>
           </Carousel>
         </div>
       </div>
     </section>
-  )
+  );
 }
+ 

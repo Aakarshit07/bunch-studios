@@ -1,12 +1,10 @@
 "use client"
 import Image from "next/image"
-import { useStore } from "@/store/use-store"
+import { useSharedStore } from '@/store/useSharedStore';
 import { projects } from "@/lib/constants"
 
-
-
 export function ProjectsSection() {
-  const { setSelectedProject, setProjectModalOpen } = useStore()
+  const { setSelectedProject, setProjectModalOpen } = useSharedStore()
 
   const handleProjectClick = (project: any) => {
     setSelectedProject(project)

@@ -1,12 +1,9 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import Link from "next/link"
+import DefaultLayout from "@/components/layouts/DefaultLayout"
 
 export default function TermsOfServicePage() {
-  return (
-    <main className="min-h-screen">
-      <Header />
-
+  return (  
+    <DefaultLayout>
       <div className="pt-20 lg:pt-32 pb-16 lg:pb-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
@@ -159,8 +156,6 @@ export default function TermsOfServicePage() {
           </div>
         </div>
       </div>
-
-      <Footer />
-    </main>
+    </DefaultLayout>
   )
 }
