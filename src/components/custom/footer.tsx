@@ -1,42 +1,41 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { useState } from "react"
-import bunch_logo from "../../../public/bunch_studios_logo.png"
-import { footerSections, legalLinks, socialLinks } from "@/lib/constants"
-import { usePathname, useRouter } from "next/navigation"
-
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import bunch_logo from "../../../public/bunch_studios_logo.png";
+import { footerSections, legalLinks, socialLinks } from "@/lib/constants";
+import { usePathname, useRouter } from "next/navigation";
 
 export function Footer() {
-  const [openSection, setOpenSection] = useState<string | null>(null)
-  const router = useRouter()
-  const pathname = usePathname()
+  const [openSection, setOpenSection] = useState<string | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const toggleSection = (section: string) => {
-    setOpenSection(openSection === section ? null : section)
-  }
+    setOpenSection(openSection === section ? null : section);
+  };
 
-   const handleSectionClick = (href: string, e: React.MouseEvent) => {
-    e.preventDefault()
+  const handleSectionClick = (href: string, e: React.MouseEvent) => {
+    e.preventDefault();
     // Extract the section ID from href (e.g., "#services" from "/#services")
-    const sectionId = href.replace("/#", "#")
+    const sectionId = href.replace("/#", "#");
     // If user is on homepage, just scroll to section
     if (pathname === "/") {
-      const element = document.querySelector(sectionId)
+      const element = document.querySelector(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" })
+        element.scrollIntoView({ behavior: "smooth" });
       }
     } else {
       // If user is on another page, navigate to homepage first, then scroll
-      router.push("/")
+      router.push("/");
       // Wait for navigation to complete, then scroll to section
-      const element = document.querySelector(sectionId)
+      const element = document.querySelector(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" })
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
-  }
+  };
 
   // Render navigation link with smart behavior
   const renderNavLink = (item: { name: string; href: string }) => (
@@ -48,7 +47,7 @@ export function Footer() {
     >
       {item.name}
     </Link>
-  )
+  );
 
   return (
     <footer className="bg-primary-600 text-white">
@@ -60,7 +59,12 @@ export function Footer() {
             <div className="space-y-6">
               <div className="text-2xl font-bold text-white">
                 <Link href="/">
-                  <Image src={bunch_logo || "/placeholder.svg"} alt="bunch studios" width={168} height={68} />
+                  <Image
+                    src={bunch_logo || "/placeholder.svg"}
+                    alt="bunch studios"
+                    width={168}
+                    height={68}
+                  />
                 </Link>
               </div>
             </div>
@@ -118,8 +122,8 @@ export function Footer() {
                   </Link>
                 ))}
               </div>
-              <div>
-                <p>Copyright &copy; 2023 Bunch Studios</p>
+              <div className="text-sm my-2">
+                <p>Copyright &copy; 2025 Bunch Studios</p>
               </div>
             </div>
           </div>
@@ -132,7 +136,12 @@ export function Footer() {
           {/* Logo */}
           <div className="py-4">
             <Link href="/">
-              <Image src={bunch_logo || "/placeholder.svg"} alt="bunch studios" width={100} height={34} />
+              <Image
+                src={bunch_logo || "/placeholder.svg"}
+                alt="bunch studios"
+                width={100}
+                height={34}
+              />
             </Link>
           </div>
 
@@ -146,12 +155,19 @@ export function Footer() {
               >
                 <span className="font-medium">Services</span>
                 <svg
-                  className={`w-5 h-5 transition-transform ${openSection === "services" ? "rotate-180" : ""}`}
+                  className={`w-5 h-5 transition-transform ${
+                    openSection === "services" ? "rotate-180" : ""
+                  }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
               </button>
               {openSection === "services" && (
@@ -167,22 +183,32 @@ export function Footer() {
 
             {/* Jump To Section */}
             <div className="border-b border-white/10">
-              <button className="flex items-center justify-between w-full py-3" onClick={() => toggleSection("jumpTo")}>
+              <button
+                className="flex items-center justify-between w-full py-3"
+                onClick={() => toggleSection("jumpTo")}
+              >
                 <span className="font-medium">Jump to</span>
                 <svg
-                  className={`w-5 h-5 transition-transform ${openSection === "jumpTo" ? "rotate-180" : ""}`}
+                  className={`w-5 h-5 transition-transform ${
+                    openSection === "jumpTo" ? "rotate-180" : ""
+                  }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
               </button>
               {openSection === "jumpTo" && (
                 <div className="pb-3">
                   <ul className="space-y-2">
                     {footerSections.jumpTo.map((item) => (
-                     <li key={item.name}>{renderNavLink(item)}</li>
+                      <li key={item.name}>{renderNavLink(item)}</li>
                     ))}
                   </ul>
                 </div>
@@ -194,7 +220,10 @@ export function Footer() {
           <div className="py-4 space-y-2">
             {legalLinks.map((item) => (
               <div key={item.name}>
-                <Link href={item.href} className="text-white/80 hover:text-white text-sm">
+                <Link
+                  href={item.href}
+                  className="text-white/80 hover:text-white text-sm"
+                >
                   {item.name}
                 </Link>
               </div>
@@ -215,8 +244,11 @@ export function Footer() {
               </Link>
             ))}
           </div>
+          <div className="text-center text-sm my-2">
+            <p>Copyright &copy; 2025 Bunch Studios</p>
+          </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

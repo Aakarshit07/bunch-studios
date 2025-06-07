@@ -14,7 +14,7 @@ const partners = [
 
 export function PartnersSection() {
   return (
-    <section className="py-12 lg:py-16 bg-secondary-50 border-y overflow-hidden">
+    <section className="py-10 lg:py-12 bg-secondary-50 overflow-hidden">
       <div className="relative">
         {/* Infinite scrolling container */}
         <div className="flex animate-infinite-scroll">
@@ -31,7 +31,7 @@ export function PartnersSection() {
                     alt={partner.name}
                     width={120}
                     height={60}
-                    className="h-8 lg:h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity"
+                    className="h-8 lg:h-12 w-auto object-contain"
                   />
                 </div>
               ))}
