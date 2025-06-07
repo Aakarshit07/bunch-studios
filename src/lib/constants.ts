@@ -173,5 +173,5 @@ export const socialLinks = [
 export const legalLinks = [
   { name: "Terms of Service", href: "terms-and-conditions" },
   { name: "Privacy Policy", href: "privacy-policy" },
-  { name: "Sitemap", href: "#" },
+  { name: "Sitemap", href: "sitemap.xml" },
 ]
