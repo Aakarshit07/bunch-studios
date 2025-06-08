@@ -74,6 +74,21 @@
   --color-warning-50: #f2c94c;
   --color-danger-50: #eb5757;
   --font-poppins: "Poppins", sans-serif;
+  
+  --toast-success-bg: var(--color-success);
+  --toast-success-text: var(--color-white);
+
+  --toast-error-bg: var(--color-danger-50);
+  --toast-error-text: var(--color-white);
+
+  --toast-warning-bg: var(--color-warning-50);
+  --toast-warning-text: var(--color-black);
+
+  --toast-info-bg: var(--color-info);
+  --toast-info-text: var(--color-white);
+  --popover: var(--color-content1);         
+  --popover-foreground: var(--color-foreground); 
+  --border: var(--color-divider);    
 }
 
 

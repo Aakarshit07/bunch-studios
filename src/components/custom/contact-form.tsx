@@ -65,13 +65,15 @@ export function ContactForm() {
         throw new Error(data.error || "Something went wrong");
       }
 
-      toast("Message sent successfully!");
+      toast.success("Message sent successfully!" , {className: 'bg-white text-success text-sm border border-success'});
+
 
       resetForm();
 
       router.push("/thank-you");
     } catch (error: any) {
-      toast(error.message || "Something went wrong");
+      toast.error(error || "Something went wrong", {className: 'bg-white text-danger text-sm border border-danger'});
+
     } finally {
       setIsSubmitting(false);
     }
