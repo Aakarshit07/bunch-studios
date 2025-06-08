@@ -71,9 +71,8 @@ export function ContactForm() {
 
       router.push("/thank-you");
     } catch (error: any) {
-      toast(error.message || "Something went wrong", {
-        description: "Please try again later.",
-      });
+      console.log(error)
+      toast(error.message || "Something went wrong");
     } finally {
       setIsSubmitting(false);
     }

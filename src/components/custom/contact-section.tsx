@@ -69,9 +69,8 @@ export function ContactSection() {
 
       router.push("/thank-you");
     } catch (error: any) {
-      toast(error.message || "Something went wrong", {
-        description: "Please try again later.",
-      });
+      console.log("error", error)
+      toast(error || "Something went wrong");
     } finally {
       setIsSubmitting(false);
     }

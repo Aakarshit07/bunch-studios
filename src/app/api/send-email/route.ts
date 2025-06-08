@@ -5,6 +5,7 @@ import { resend } from "@/lib/resend";
 export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json();
+    console.log("name", name, "email", email, "message", message);
 
     const { error } = await resend.emails.send({
       from: "Bunch Studios <hello@bunchstudios.in>",
