@@ -71,7 +71,6 @@ export function ContactForm() {
 
       router.push("/thank-you");
     } catch (error: any) {
-      console.log(error)
       toast(error.message || "Something went wrong");
     } finally {
       setIsSubmitting(false);
@@ -210,7 +209,7 @@ export function ContactForm() {
           >
             {isSubmitting ? (
               <>
-                <LoaderFlat />
+                Sending...
               </>
             ) : (
               "Send Message"

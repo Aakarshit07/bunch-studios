@@ -69,7 +69,6 @@ export function ContactSection() {
 
       router.push("/thank-you");
     } catch (error: any) {
-      console.log("error", error)
       toast(error || "Something went wrong");
     } finally {
       setIsSubmitting(false);
@@ -233,7 +232,7 @@ export function ContactSection() {
             >
               {isSubmitting && (
                 <>
-                  <LoaderFlat />
+                 Sending...
                 </>
               )}
               {!isSubmitting && "Send Message"}

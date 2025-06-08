@@ -5,7 +5,6 @@ import { resend } from "@/lib/resend";
 export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json();
-    console.log("name", name, "email", email, "message", message);
 
     const { error } = await resend.emails.send({
       from: "Bunch Studios <hello@bunchstudios.in>",
@@ -16,9 +15,12 @@ export async function POST(req: Request) {
     });
 
     if (error) {
-      return new Response(
-        JSON.stringify({ error }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
+      return Response.json(
+        {
+          success: false,
+          message: error.message || "Something went wrong while sending email",
+        },
+        { status: 500 }
       );
     }
 
@@ -34,14 +36,20 @@ export async function POST(req: Request) {
       secure: process.env.NODE_ENV === "production",
     });
 
-    return new Response(
-      JSON.stringify({ success: true }),
-      { status: 200, headers: { "Content-Type": "application/json" } }
+    return Response.json(
+      {
+        success: true,
+        message: "Email sent successfully!",
+      },
+      { status: 200 }
     );
-  } catch (err) {
-    return new Response(
-      JSON.stringify({ error: "Internal server error" }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
+  } catch (err: any) {
+    return Response.json(
+      {
+        success: false,
+        message: err.message || "Something went wrong",
+      },
+      { status: 500 }
     );
   }
 }
