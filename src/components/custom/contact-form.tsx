@@ -1,76 +1,83 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent } from "@/components/ui/card"
-import { useToast } from "@/hooks/use-toast"
-import { useRouter } from "next/navigation"
-import { Loader2 } from "lucide-react"
+import type React from "react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
-import { validationRules } from "@/lib/validation"
-import { useFormValidation } from "@/hooks/useFormValidation"
+import { validationRules } from "@/lib/validation";
+import { useFormValidation } from "@/hooks/useFormValidation";
+import LoaderFlat from "../skletons/LoaderFlat";
+import { toast } from "sonner";
 
 const contactFormRules = {
   name: validationRules.name,
   email: validationRules.email,
   message: validationRules.message,
-}
+};
 
 const initialFormData = {
   name: "",
   email: "",
   message: "",
-}
+};
 
 export function ContactForm() {
-  const [formType, setFormType] = useState<"sayHi" | "getQuote">("sayHi")
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formType, setFormType] = useState<"sayHi" | "getQuote">("sayHi");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
-  const { toast } = useToast()
-  const router = useRouter()
-
-  const { formData, errors, handleInputChange, handleBlur, validateAllFields, resetForm } = useFormValidation({
+  const {
+    formData,
+    errors,
+    handleInputChange,
+    handleBlur,
+    validateAllFields,
+    resetForm,
+  } = useFormValidation({
     initialData: initialFormData,
     validationRules: contactFormRules,
-  })
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!validateAllFields()) {
-      return
+      return;
     }
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     try {
-      // Simulate API call with a delay
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-      // Simulate form submission
-      toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you within 24 hours.",
-      })
+      const data = await res.json();
 
-      // Reset form
-      resetForm()
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
 
-      // Navigate to thank you page
-      router.push("/thank-you")
-    } catch (error) {
-      toast({
-        title: "Something went wrong",
+      toast("Message sent successfully!");
+
+      resetForm();
+
+      router.push("/thank-you");
+    } catch (error: any) {
+      toast(error.message || "Something went wrong", {
         description: "Please try again later.",
-        variant: "destructive",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <Card className="w-full bg-secondary-100 shadow-lg rounded-2xl">
@@ -98,7 +105,9 @@ export function ContactForm() {
                 onChange={(e) => setFormType(e.target.value as "getQuote")}
                 className="w-4 h-4 bg-white text-gray-950 border-gray-300 focus:ring-primary-400"
               />
-              <span className="text-sm font-medium text-gray-700">Get a Quote</span>
+              <span className="text-sm font-medium text-gray-700">
+                Get a Quote
+              </span>
             </label>
           </div>
 
@@ -131,7 +140,10 @@ export function ContactForm() {
 
           {/* Email Field */}
           <div className="space-y-2">
-            <label htmlFor="email" className="text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="text-sm font-medium text-gray-700"
+            >
               Email*
             </label>
             <Input
@@ -158,9 +170,17 @@ export function ContactForm() {
 
           {/* Message Field */}
           <div className="space-y-2">
-            <label htmlFor="message" className="text-sm font-medium text-gray-700">
-              Message*
-            </label>
+            <div className="flex items-center justify-between gap-4">
+              <label
+                htmlFor="contact-message"
+                className="text-sm font-medium text-gray-700"
+              >
+                Message*
+              </label>
+              <span className="text-xs text-gray-700">
+                {formData.message.length} / 300
+              </span>
+            </div>
             <Textarea
               id="message"
               name="message"
@@ -191,7 +211,7 @@ export function ContactForm() {
           >
             {isSubmitting ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
+                <LoaderFlat />
               </>
             ) : (
               "Send Message"
@@ -200,5 +220,5 @@ export function ContactForm() {
         </form>
       </CardContent>
     </Card>
-  )
+  );
 }

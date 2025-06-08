@@ -4,10 +4,12 @@ import type React from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { Loader2 } from "lucide-react";
-
 import { validationRules } from "@/lib/validation";
 import { useFormValidation } from "@/hooks/useFormValidation";
+import { toast } from "sonner";
+import { Textarea } from "../ui/textarea";
+import { Loader2 } from "lucide-react";
+import LoaderFlat from "../skletons/LoaderFlat";
 
 const contactFormRules = {
   name: validationRules.name,
@@ -41,24 +43,35 @@ export function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!validateAllFields()) {
       return;
     }
+
     setIsSubmitting(true);
+
     try {
-      // Simulate API call with a delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-      // Handle form submission here
-      console.log("Form submitted:", { formType, ...formData });
+      const data = await res.json();
 
-      // Reset form
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      toast("Message sent successfully!");
+
       resetForm();
 
-      // Navigate to thank you page
       router.push("/thank-you");
-    } catch (error) {
-      console.error("Error submitting form:", error);
+    } catch (error: any) {
+      toast(error.message || "Something went wrong", {
+        description: "Please try again later.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -181,9 +194,11 @@ export function ContactSection() {
                 >
                   Message*
                 </label>
-                <span className="text-xs text-gray-700">{formData.message.length} / 300</span>
+                <span className="text-xs text-gray-700">
+                  {formData.message.length} / 300
+                </span>
               </div>
-              <textarea
+              <Textarea
                 id="contact-message"
                 name="message"
                 placeholder="Message"
@@ -219,8 +234,7 @@ export function ContactSection() {
             >
               {isSubmitting && (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Sending..
+                  <LoaderFlat />
                 </>
               )}
               {!isSubmitting && "Send Message"}
